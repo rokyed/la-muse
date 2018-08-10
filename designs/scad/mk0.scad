@@ -2,20 +2,20 @@
 // structure is: declaration, variables, calls
 
 //declarations:
-module main_chassis(mcha_width = 600, mcha_height = 880, mcha_thickness = 100, head_space = 350, head_sides_tallness= 150) {
+module main_chassis(mcha_width = 600, mcha_height = 880, mcha_thickness = 100, head_space = 600, head_depth=400, head_sides_tallness= 150) {
 	difference() {
 		union(){
 			cube([mcha_width,mcha_thickness, mcha_height]);
 			translate([(mcha_width/2) - (head_space/2), 0, mcha_height - head_sides_tallness]) {
 				difference() {
-					cube([head_space, head_space, head_sides_tallness]);
+					cube([head_space, head_depth, head_sides_tallness]);
 					translate([mcha_thickness/2, mcha_thickness * 1,0]) {
-						cube([head_space -mcha_thickness, (head_space-(mcha_thickness)), head_sides_tallness]);
+						cube([head_space -mcha_thickness, (head_depth-(mcha_thickness)), head_sides_tallness]);
 					}
 				}
 			}
 		}
-		
+
 	}
 }
 
